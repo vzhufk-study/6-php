@@ -1,6 +1,7 @@
 <html>
 <head>
-    <title>Form add</title>
+    <title>Data table</title>
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="style/table.css">
 </head>
 

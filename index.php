@@ -3,13 +3,47 @@
     <head>
       <meta charset="UTF-8">
       <link rel="stylesheet" href="style/table.css">
-      <title>Zhufyak Vadym</title>
+        <link rel="shortcut icon" href="/favicon.ico">
+      <title>Zhufyak Vadym PHP Lab</title>
     </head>
     <body>
             <table class="table-style">
-                <tr><th><a href="table.php">Table</a></th></tr>
-                <tr><th><a href="add_form.php">Add Form</a></th></tr>
+                <tr>
+                    <td colspan="2" class="text-center"><b>Жуф'як Вадим. Варіант 8.</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <b>Вхідні дані:</b><br>
+                        Файл містить інформацію про навчальні предмети у вигляді: назва предмету,  номер семестру, в якому читається, кількість годин, форма контролю (залік, іспит), прізвище й ім’я лектора.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <b>Лабораторна робота №1 (Структура сайту – 1 балів)</b><br>
+                        Розробити структуру головної сторінки сайту з посиланнями на лабораторні роботи в якості пунктів меню і розмістити на цій сторінці інформацію про автора.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Лабораторна робота №2 (Обробка файлів – 4 балів)</b> <br>
+                        Отримати всю інформацію із файлу і вивести її у вікно браузера. Створити форму для добавлення нового запису у файл і реалізувати її обробку.
+                    </td>
+                    <td class="text-center"><a href="add_form.php">Add Form</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Лабораторна робота №3 (Масиви – 5 балів)</b><br>
+                        Вивести усі навчальні предмети впорядковані за зростанням номерів семестрів в якому читається й кількість різних лекторів, що зустрічаються у файлі.
+                    </td>
+                    <td class="text-center" rowspan="2"><a href="table.php">Table</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Лабораторна робота №4 (Стрічки – 5 балів)</b><br>
+                        У форму вводиться набір символів. Вивести у вікно браузера усі навчальні предмети, назви яких містять задані символи.
+                    </td>
+                </tr>
+                <tr><th class="text-center" colspan="2"><a href="https://github.com/zhufyakvv/PHP_Labs">GitHub</a></th></tr>
             </table>
-        <hr>        
     </body>
 </html>      
