@@ -43,7 +43,7 @@
             echo "</tr>";
         }
     ?>
-    <tr><th colspan="5" class="text-center"><a href="/Labs/add_form.php">Add new subject</a></th></tr>
+    <tr><th colspan="5" class="text-center"><a href="/add_form.php">Add new subject</a></th></tr>
     <?php
         if (isset($_GET['unique'])) {
             $unique = unique($array, $_GET['unique']);

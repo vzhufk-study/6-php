@@ -7,12 +7,8 @@
     </head>
     <body>
             <table class="table-style">
-                <tr><th>Lab 1</th></tr>
-            <?php
-            for ($i = 2; $i<10; ++$i){
-                echo "<tr><td><a href='/lab$i.php'>Lab $i</a><tr></td>";
-            }
-            ?>
+                <tr><th><a href="table.php">Table</a></th></tr>
+                <tr><th><a href="add_form.php">Add Form</a></th></tr>
             </table>
         <hr>        
     </body>

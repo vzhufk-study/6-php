@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     array_push($a, $current);
     save($filename, $a);
-    redirect("/Labs/table.php");
+    redirect("/table.php");
 }
 ?>    
     
