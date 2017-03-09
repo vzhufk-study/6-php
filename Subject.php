@@ -21,7 +21,27 @@ class Subject implements \JsonSerializable
         $this->control = $control;
         $this->lector = $lector;
     }
-    
+
+    /**
+     * Construct subject from object
+     * @param $object
+     * @return Subject
+     */
+    public function object($object){
+        $subject = new Subject("", 0, 0, 0, "");
+        $subject->name = $object['name'];
+        $subject->semester = $object['semester'];
+        $subject->hours = $object['hours'];
+        $subject->control = $object['control'];
+        $subject->lector = $object['lector'];
+        return $subject;
+    }
+
+
+    /**
+     * Form JSONing of class
+     * @return array
+     */
     public function jsonSerialize()
     {
         return get_object_vars($this);
@@ -47,27 +67,40 @@ class Subject implements \JsonSerializable
     
 $filename = "data";
 
-# Saves array of subjects to file in json format
+/**
+ * Saves array of subjects to file in json format
+ * @param $filename - name of file
+ * @param $value - array of subjects
+ */
 function save($filename, $value){
     $file = fopen($filename, "w");
     fwrite($file, json_encode($value));
     fclose($file);
 }
 
-# Loads jsoned array of subjects and wake it into subject class
+/**
+ * Loads JSONEed array of subjects and wake it into subject class
+ * @param $filename - name of file
+ * @return array - array of subjects
+ */
 function load($filename){
     $file = fopen($filename, "r");
-    $text = fread($file, filesize($filename));
-    $tmp = json_decode($text, true);
+    $tmp = json_decode(fread($file, filesize($filename)), true);
     fclose($file);
     $result = [];
     foreach($tmp as $value){
-        array_push($result, new Subject($value['name'], intval($value['semester']), intval($value['hours']), intval($value['control']), $value['lector']));
+        array_push($result, Subject::object($value));
     }
     return $result;
 }
 
-# Sorts array of subjects by semester
+
+/**
+ * Sorts array of subjects by some filed
+ * @param $array - array of Subjects
+ * @param $filed - sorting parameter
+ * @return mixed - sorted array of Subjects
+ */
 function sort_by($array, $filed){
     if ($filed === "name"){
         usort($array, function ($a, $b) {
@@ -93,7 +126,12 @@ function sort_by($array, $filed){
     return $array;
 }
 
-# Finds unique lectors
+/**
+ * Gets unique elements from array of Subjects by some field
+ * @param $array - array of Subjects
+ * @param $field - unique param
+ * @return array - unique params of array of Subjects
+ */
 function unique($array, $field){
     $result = [];
     foreach ($array as $value){
@@ -125,13 +163,14 @@ function unique($array, $field){
 
 # String lab
 function get_subjects_by_messed_string($array, $string){
-    $tmp = $array;
     $result = [];
-    for ($i = 0; $i < count($string); ++$i){
-        foreach ($tmp as $value){
-            if (!strpos($value->get_name(), $string[i])==false){
-                array_push($result, $value);
-                array_pop($result, $value);
+    for ($i = 0; $i < count($string); $i++){
+        $amount = count($array);
+        #OMFG
+        for ($j = 0; $j < $amount; $j++){
+            if (strstr($array[$j]->get_name(), $string[$i])!==false){
+                array_push($result, $array[$j]);
+                unset($array[$j]);
             }
         }        
     }
