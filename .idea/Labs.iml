@@ -4,21 +4,13 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/img" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/style" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/private" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/dashboard" />
       <excludeFolder url="file://$MODULE_DIR$/webalizer" />
       <excludeFolder url="file://$MODULE_DIR$/xampp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="PHP Runtime" type="php">
-        <CLASSES>
-          <root url="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard" />
-        </CLASSES>
-        <SOURCES>
-          <root url="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>

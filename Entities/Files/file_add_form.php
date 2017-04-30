@@ -2,8 +2,8 @@
 <head>
     <title>Form add</title>
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="style/form-style.css">
-    <link rel="stylesheet" href="style/table.css">
+    <link rel="stylesheet" href="../../style/form-style.css">
+    <link rel="stylesheet" href="../../style/table.css">
 </head>
 
 <body>
@@ -49,7 +49,12 @@
 include "Subject.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $current = new Subject($_POST["name"], intval($_POST["semester"]), intval($_POST["hours"]), intval($_POST["control"]), $_POST["lector"]);
+    $name = strval($_POST["name"]);
+    $semester = abs(intval($_POST["semester"])) % 11;
+    $hours = abs(intval($_POST["hours"]));
+    $control = abs(intval($_POST["control"]));
+    $lector = strval($_POST["lector"]);
+    $current = new FileSubject($name, $semester, $hours, $control, $lector);
     $a = load($filename);
     if ($a == null){
         $a = [];

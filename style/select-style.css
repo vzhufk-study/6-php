@@ -1,0 +1,13 @@
+
+select, input[type=number] {
+    -webkit-appearance: none;
+    background-color: #eee;
+    box-sizing: border-box;
+    cursor: pointer;
+    float: left;
+    font-size: 1em;
+    line-height: 1em;
+    padding: 1em 1em;
+    outline: 1px black;
+}
+

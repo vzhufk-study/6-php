@@ -5,7 +5,7 @@
  * Date: 07.03.2017
  * Time: 9:53
  */
-class Subject implements \JsonSerializable
+class FileSubject implements \JsonSerializable
 {
     private $name = "";
     private $semester = -1;
@@ -15,20 +15,20 @@ class Subject implements \JsonSerializable
 
     public function __construct($name, $semester, $hours, $control, $lector)
     {
-        $this->name = $name;
-        $this->semester = $semester;
-        $this->hours = $hours;
-        $this->control = $control;
-        $this->lector = $lector;
+        $this->name = strval($name);
+        $this->semester = abs(intval($semester));
+        $this->hours = abs(intval($hours));
+        $this->control = abs(intval($control));
+        $this->lector = strval($lector);
     }
 
     /**
      * Construct subject from object
      * @param $object
-     * @return Subject
+     * @return FileSubject
      */
     public function object($object){
-        $subject = new Subject("", 0, 0, 0, "");
+        $subject = new FileSubject("", 0, 0, 0, "");
         $subject->name = $object['name'];
         $subject->semester = $object['semester'];
         $subject->hours = $object['hours'];
@@ -62,6 +62,8 @@ class Subject implements \JsonSerializable
     public function get_lector(){
         return $this->lector;
     }
+
+
 }
 
     
@@ -89,7 +91,7 @@ function load($filename){
     fclose($file);
     $result = [];
     foreach($tmp as $value){
-        array_push($result, Subject::object($value));
+        array_push($result, FileSubject::object($value));
     }
     return $result;
 }
@@ -164,15 +166,12 @@ function unique($array, $field){
 # String lab
 function get_subjects_by_messed_string($array, $string){
     $result = [];
-    for ($i = 0; $i < count($string); $i++){
-        $amount = count($array);
-        #OMFG
-        for ($j = 0; $j < $amount; $j++){
-            if (strstr($array[$j]->get_name(), $string[$i])!==false){
-                array_push($result, $array[$j]);
-                unset($array[$j]);
-            }
-        }        
+    $amount = count($array);
+    for ($j = 0; $j < $amount; $j++){
+        if (strstr(strtolower($array[$j]->get_name()), strtolower($string))!==false){
+            array_push($result, $array[$j]);
+            unset($array[$j]);
+        }
     }
     return $result;
 }

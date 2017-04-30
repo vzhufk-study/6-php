@@ -2,22 +2,19 @@
 <head>
     <title>Data table</title>
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="style/table.css">
-    <link rel="stylesheet" href="style/form-style.css">
+    <link rel="stylesheet" href="../../style/table.css">
+    <link rel="stylesheet" href="../../style/form-style.css">
 </head>
 
 <body>
 <?php
     include "Subject.php";
     $array = (load($filename));
+    $search = NULL;
     if (isset($_POST['search'])) {
         $search = $_POST['search'];
     }elseif (isset($_GET['search'])){
         $search = $_GET['search'];
-    }
-
-    if (isset($search) && strlen($search) == 0){
-        $search = NULL;
     }
 
 ?>
@@ -26,7 +23,7 @@
     <ul>
         <li>
             <label for="search">Search subject:</label>
-            <input type="text" name="search" value="<?php if (isset($search)){ echo $search; }?>">
+            <input type="text" name="search" value="<?php if (isset($search) and $search != NULL){ echo $search; }?>">
             <span>Search form symbols in subject name</span>
         </li>
         <li>
@@ -35,7 +32,7 @@
     </ul>
 </form>
 <?php
- if (isset($search)){
+ if (isset($search) and $search!=NULL){
      $array = get_subjects_by_messed_string($array, $search);
  }
 ?>
