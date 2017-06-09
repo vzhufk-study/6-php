@@ -12,7 +12,7 @@ class DBPropertyManager
     private $password = "1111";
     private $host = "localhost";
     private $database;
-    private $link;
+    public $link;
 
     public function __construct($host=null, $username=null, $password=null)
     {

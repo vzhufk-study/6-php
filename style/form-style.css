@@ -1,6 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
-.login-page {
+.form_holder {
     width: 600px;
     padding: 8% 0 0;
     margin: auto;
@@ -15,7 +13,7 @@
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input, .form select {
+.form input, .form select, file {
     font-family: "Roboto", sans-serif;
     outline: 0;
     background: #f2f2f2;

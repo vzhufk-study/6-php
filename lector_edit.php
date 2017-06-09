@@ -3,6 +3,9 @@
     <title>Lector Edit</title>
     <link rel="stylesheet" href="style/form-style.css">
 </head>
+<body>
+<div class="form_holder">
+    <div class="form">
 <?php
 /**
  * Created by Zhufyak V.V.
@@ -42,10 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $lector = PostUpdateDB($data_base, $post, $lector);
     }
     ?>
-    <body>
-    <div class="login-page">
-        <div class="form">
-            <form class="register-form" method="get">
+
+            <form method="get">
                 <?php if ($free == $lector->getId()){ ?>
                 <label for="submit">Added successfully.</label>
                 <?php }else{ ?>
@@ -53,9 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php } ?>
                 <input name="submit" type="submit" value="Continue">
             </form>
-        </div>
-    </div>
-    </body>
     <?php
 }else{
     if(isset($_GET["id"]) && $_GET["id"]!=$free){
@@ -76,10 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<body>
-<div class="login-page">
-    <div class="form">
-        <form class="register-form" method="post">
+        <form method="post">
             <br>
             <label for="id">ID:</label>
             <select name="id" onchange="window.location.href = 'lector_edit.php?id='+this.value;">
@@ -135,8 +130,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input name="hire_date" type="date" value="<?php echo $lector->getHireDate(); ?>">
             <input type="submit">
         </form>
+
+<?php } ?>
     </div>
 </div>
 </body>
 </html>
-<?php } ?>

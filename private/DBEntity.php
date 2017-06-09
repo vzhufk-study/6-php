@@ -12,9 +12,12 @@ class DBEntity
 {
     private $id;
     private $link;
+    
     public function __construct($object)
     {
-        $this->id = $object->id;
+        foreach ($object as $key => $value){
+                $this->$key = $value;
+        }
     }
 
     public function relate($db){
@@ -27,6 +30,7 @@ class DBEntity
             $check = $this->link->query("SELECT * FROM ".$this->getTable()." WHERE `id`=\"".$this->getId()."\"");
             if ($check->num_rows === 0){
                 $q = "INSERT INTO ".$this->getTable()." ".$this->getProperty()." VALUES ".$this->getValue();
+                //echo $q;
                 $this->link->query($q) or die("Error while executing:<br>".$q."<br>".mysqli_error($this->link));
             }else{
                 die("ID already exist.");
@@ -82,11 +86,33 @@ class DBEntity
     }
 
     protected function getProperty(){
-        return "(`property`)";
+        $array = get_object_vars($this);
+        $result = "(";
+        foreach ($array as $key => $value){
+            if ($key != 'link'){
+                if (strlen($result) > 2) {
+                    $result .=",";
+                }
+                $result .= "`".$key."`";
+                }
+        }
+        $result .= ")";
+        return $result;
     }
 
     protected function getValue(){
-        return "(value)";
+        $array = get_object_vars($this);
+        $result = "(";
+        foreach ($array as $key => $value){
+            if ($key != 'link'){
+                if (strlen($result) > 2) {
+                    $result .=", ";
+                }
+                $result .= "\"".$value."\"";
+            }
+        }
+        $result .= ")";
+        return $result;
     }
 
     public function getTable(){

@@ -12,9 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-<div class="login-page">
+<div class="form_holder">
     <div class="form">
-        <form class="register-form" method="post">
+        <form method="post">
             <input id="date" name="date" type="date" value="<?php if(isset($date)) echo $date; ?>">
             <input type="submit" value="Update Date">
         </form>

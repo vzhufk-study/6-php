@@ -3,6 +3,10 @@
     <title>Add Plan</title>
     <link rel="stylesheet" href="style/form-style.css">
 </head>
+
+<body>
+<div class="form_holder">
+    <div class="form">
 <?php
 /**
  * Created by Zhufyak V.V.
@@ -31,25 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
     } else {
         PostInsertDB($data_base, $_POST, 'Load');
     }
-    ?>
-    <body>
-    <div class="login-page">
-        <div class="form">
-            <form class="register-form" method="get">
+    ?>      <form method="get">
                 <label for="submit">Plan added successfully.</label>
                 <input name="submit" type="submit" value="Add more">
             </form>
-        </div>
-    </div>
-    </body>
     <?php
 }else{
 ?>
-
-<body>
-<div class="login-page">
-    <div class="form">
-        <form class="register-form" method="post">
+        <form method="post">
             <br>
             <label for="id">ID:</label>
             <input readonly name="id" type="number" value="<?php
@@ -101,8 +94,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
             <input name="auditory" type="number" min="1" max="47">
             <input type="submit">
         </form>
-    </div>
+<?php } ?>
+</div>
 </div>
 </body>
+
+
 </html>
-<?php } ?>

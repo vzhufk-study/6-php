@@ -3,6 +3,9 @@
     <title>Department Edit</title>
     <link rel="stylesheet" href="style/form-style.css">
 </head>
+<body>
+<div class="form_holder">
+    <div class="form">
 <?php
 /**
  * Created by Zhufyak V.V.
@@ -39,20 +42,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $department = PostUpdateDB($data_base, $post, $department);
     }
     ?>
-    <body>
-    <div class="login-page">
-        <div class="form">
-            <form class="register-form" method="get">
+
+            <form method="get">
                 <?php if ($free == $department->getId()){ ?>
                     <label for="submit">Department added successfully.</label>
                 <?php }else{ ?>
                     <label for="submit">Changed successfully.</label>
                 <?php } ?>
                 <input name="submit" type="submit" value="Continue">
-            </form>
-        </div>
-    </div>
-    </body>
     <?php
 }else{
 if(isset($_GET["id"]) && $_GET["id"]!=$free){
@@ -66,11 +63,7 @@ if(isset($_GET["id"]) && $_GET["id"]!=$free){
 }
 
 ?>
-
-<body>
-<div class="login-page">
-    <div class="form">
-        <form class="register-form" method="post">
+        <form method="post">
             <br>
             <label for="id">ID:</label>
             <select name="id" onchange="window.location.href = 'department_edit.php?id='+this.value;">
@@ -98,9 +91,9 @@ if(isset($_GET["id"]) && $_GET["id"]!=$free){
             <input name="name" type="text" placeholder="<?php echo $department->getName(); ?>">
             <br>
             <input type="submit">
+<?php } ?>
         </form>
-    </div>
+</div>
 </div>
 </body>
 </html>
-<?php } ?>

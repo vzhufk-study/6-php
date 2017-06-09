@@ -7,15 +7,15 @@
  */
 
 include "private/DBPropertyManager.php";
-include_once "University.php";
+include_once "Entities/User.php";
 
 $db = new DBPropertyManager();
 $db->link();
-$db->select_db("University");
+$db->select_db("blog");
 $link = $db->getLink();
 
-$u = new University($db);
 
-#$v = new Group((object)['id'=>'1', 'number'=>'302', 'department'=>'1', 'specialty'=>'Applied Math', 'amount'=>'19']);
-#$v->relate($db);
-#$v->insert();
+
+$v = new User((object)['id'=>'1', 'login'=>'test', 'password'=>'test', 'email'=>'test@test.com', 'admin'=>true]);
+$v->relate($db);
+$v->insert();

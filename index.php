@@ -9,7 +9,7 @@
     <body>
             <table class="table-style">
                 <tr>
-                    <td colspan="2" class="text-center"><b>Жуф'як Вадим. Варіант 8.</b></td>
+                    <td colspan="2" class="text-center"><b><a href="/phpmyadmin/">Жуф'як Вадим. Варіант 8.</a></b></td>
                 </tr>
                 <tr>
                     <td colspan="2">

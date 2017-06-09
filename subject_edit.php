@@ -3,6 +3,9 @@
     <title>Subject Edit</title>
     <link rel="stylesheet" href="style/form-style.css">
 </head>
+<body>
+<div class="form_holder">
+    <div class="form">
 <?php
 /**
  * Created by Zhufyak V.V.
@@ -22,7 +25,7 @@ $data_base = new DBPropertyManager();
 $data_base->link();
 $data_base->select_db("University");
 $university = new University($data_base);
-$subjects = $university->getDepartments();
+$subjects = $university->getSubjects();
 $free = 1;
 
 while (isset($subjects[$free])){
@@ -38,10 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $subject = PostUpdateDB($data_base, $post, $subject);
     }
     ?>
-    <body>
-    <div class="login-page">
-        <div class="form">
-            <form class="register-form" method="get">
+            <form method="get">
                 <?php if ($free == $subject->getId()){ ?>
                     <label for="submit">Subject added successfully.</label>
                 <?php }else{ ?>
@@ -49,9 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php } ?>
                 <input name="submit" type="submit" value="Continue">
             </form>
-        </div>
-    </div>
-    </body>
+
     <?php
 }else{
 if(isset($_GET["id"]) && $_GET["id"]!=$free){
@@ -65,14 +63,10 @@ if(isset($_GET["id"]) && $_GET["id"]!=$free){
 }
 
 ?>
-
-<body>
-<div class="login-page">
-    <div class="form">
-        <form class="register-form" method="post">
+        <form method="post">
             <br>
             <label for="id">ID:</label>
-            <select name="id" onchange="window.location.href = 'department_edit.php?id='+this.value;">
+            <select name="id" onchange="window.location.href = 'subject_edit.php?id='+this.value;">
                 <?php
                 $was = false;
                 foreach ($subjects as $current_subject){
@@ -98,8 +92,9 @@ if(isset($_GET["id"]) && $_GET["id"]!=$free){
             <br>
             <input type="submit">
         </form>
+
+<?php } ?>
     </div>
 </div>
 </body>
 </html>
-<?php } ?>

@@ -1,8 +1,11 @@
 <html>
 <head>
-    <title>Lector Edit</title>
+    <title>Group Edit</title>
     <link rel="stylesheet" href="style/form-style.css">
 </head>
+<body>
+<div class="form_holder">
+    <div class="form">
 <?php
 /**
  * Created by Zhufyak V.V.
@@ -38,10 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $group = PostUpdateDB($data_base, $post, $group);
     }
     ?>
-    <body>
-    <div class="login-page">
-        <div class="form">
-            <form class="register-form" method="get">
+            <form method="get">
                 <?php if ($free == $group->getId()){ ?>
                     <label for="submit">Added successfully.</label>
                 <?php }else{ ?>
@@ -49,9 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php } ?>
                 <input name="submit" type="submit" value="Continue">
             </form>
-        </div>
-    </div>
-    </body>
+
     <?php
 }else{
 if(isset($_GET["id"]) && $_GET["id"]!=$free){
@@ -69,10 +67,7 @@ if(isset($_GET["id"]) && $_GET["id"]!=$free){
 
 ?>
 
-<body>
-<div class="login-page">
-    <div class="form">
-        <form class="register-form" method="post">
+        <form method="post">
             <br>
             <label for="id">ID:</label>
             <select name="id" onchange="window.location.href = 'group_edit.php?id='+this.value;">
@@ -119,8 +114,9 @@ if(isset($_GET["id"]) && $_GET["id"]!=$free){
             <br>
             <input type="submit">
         </form>
+
+<?php } ?>
     </div>
 </div>
 </body>
 </html>
-<?php } ?>

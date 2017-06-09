@@ -262,5 +262,14 @@ class University
     }
 
 
-
+    # TODO this
+    public function sort($property, $field, $order=true){
+        $camel_field = str_replace('_', '', ucwords($field, '_'));
+        $get = "get".ucfirst($camel_field);
+        usort($this->$property, function($a, $b){
+            if (is_string($a) && is_string($b)){
+                #return strcmp($a->$get(), $b->get())
+            }
+        });
+    }
 }
